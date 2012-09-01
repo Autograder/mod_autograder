@@ -1,10 +1,21 @@
 package play.modules.auto_grader.mvc;
 
-import com.auto_grader.mvc.results.RenderJson;
+import play.modules.auto_grader.MyExclusionStrategy;
 
-public class ControllerMixin {
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.lang.reflect.Type;
+
+import play.mvc.Controller;
+
+public class ControllerMixin extends Controller {
+
+    private static Gson gson = new GsonBuilder()
+            .setExclusionStrategies(new MyExclusionStrategy())
+            .create();
 
     protected static void renderJson(Object o) {
-        throw new RenderJson(o);
+        renderJSON(gson.toJson(o));
     }
 }

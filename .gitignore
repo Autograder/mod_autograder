@@ -1,2 +1,5 @@
 .*
 !.gitignore
+dist
+lib
+*.pyc
