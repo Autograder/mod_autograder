@@ -1,0 +1,5 @@
+# Default auto_grader messages
+# You can specialize this file for each language.
+# For exemple, for french create a messages.fr file
+
+#auto_grader.name=auto_grader

@@ -1,0 +1,4 @@
+self: play -> auto_grader 0.1
+
+require:
+    - play
