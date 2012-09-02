@@ -1,11 +1,9 @@
 package play.modules.auto_grader.mvc;
 
-import play.modules.auto_grader.MyExclusionStrategy;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.lang.reflect.Type;
+import play.modules.auto_grader.MyExclusionStrategy;
 
 import play.mvc.Controller;
 
