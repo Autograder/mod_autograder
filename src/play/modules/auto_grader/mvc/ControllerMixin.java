@@ -3,17 +3,18 @@ package play.modules.auto_grader.mvc;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import play.modules.auto_grader.MyExclusionStrategy;
+import play.modules.auto_grader.annotations.*;
+import play.modules.auto_grader.gson.ExcludeWithAnnotations;
 
 import play.mvc.Controller;
 
 public class ControllerMixin extends Controller {
 
-    private static Gson gson = new GsonBuilder()
-            .setExclusionStrategies(new MyExclusionStrategy())
+    protected static void renderJson(Object o, Class<?>... annotations) {
+        Gson gson = new GsonBuilder()
+            .setExclusionStrategies(new ExcludeWithAnnotations(Exclude.class, annotations))
             .create();
 
-    protected static void renderJson(Object o) {
         renderJSON(gson.toJson(o));
     }
 }
