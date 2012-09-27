@@ -8,7 +8,7 @@ import play.modules.auto_grader.gson.ExcludeWithAnnotations;
 
 import play.mvc.Controller;
 
-public class ControllerMixin extends Controller {
+public class RESTController extends Controller {
 
     protected static void renderJson(Object o, Class<?>... annotations) {
         Gson gson = new GsonBuilder()
