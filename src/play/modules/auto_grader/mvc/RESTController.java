@@ -3,6 +3,8 @@ package play.modules.auto_grader.mvc;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import play.db.jpa.JPABase;
+
 import play.modules.auto_grader.annotations.*;
 import play.modules.auto_grader.gson.ExcludeWithAnnotations;
 
@@ -16,5 +18,11 @@ public class RESTController extends Controller {
             .create();
 
         renderJSON(gson.toJson(o));
+    }
+
+    protected static void notFoundIfDNE(JPABase o, String what) {
+        if (!o.isPersistent()) {
+            notFound(what);
+        }
     }
 }
